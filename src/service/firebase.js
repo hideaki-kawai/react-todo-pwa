@@ -13,9 +13,19 @@ firebase.initializeApp({
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 });
 
+// Google プロバイダ オブジェクトのインスタンスを作成
 const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+// ログインに関する情報を取得
 export const auth = firebase.auth();
 
+// DB（Firestore）に関する情報を取得
+export const db = firebase.firestore();
+
+/**
+ * Google プロバイダ オブジェクトを使用して Firebase での認証を行う
+ * ポップアップ ウィンドウでログインを行う場合は、signInWithPopup を呼び出す
+ */
 export const signInWithGoogle = () => {
   firebase
     .auth()
@@ -24,6 +34,9 @@ export const signInWithGoogle = () => {
     .catch((error) => console.log(error.message));
 };
 
+/**
+ * ログアウト処理
+ */
 export const logout = () => {
   firebase
     .auth()
