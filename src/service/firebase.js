@@ -22,6 +22,9 @@ export const auth = firebase.auth();
 // DB（Firestore）に関する情報を取得
 export const db = firebase.firestore();
 
+// firestoreの初期化のタイミングで永続化（オフライン対応）を有効化する
+db.enablePersistence();
+
 /**
  * Google プロバイダ オブジェクトを使用して Firebase での認証を行う
  * ポップアップ ウィンドウでログインを行う場合は、signInWithPopup を呼び出す
